@@ -1,11 +1,15 @@
 - hosts: database
-
+  become: yes
+  roles:
+    - common
+    - { role: geerlingguy.mysql }
+    
   tasks:
   - name: Create website database
     mysql_db: 
       name=world
-      login_user=root
-      login_password=root
+      login_user= {{ mysql_root_username }}
+      login_password= {{ mysql_root_password }}
       state=present
 
   - name: Copy website database
@@ -16,7 +20,7 @@
   - name: Import website database
     mysql_db: 
       name=world
-      login_user=root
-      login_password=root
+      login_user={{ mysql_root_username }}
+      login_password= {{ mysql_root_password }}
       target=/tmp/world.sql
       state=import

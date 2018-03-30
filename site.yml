@@ -1,7 +1,5 @@
 - hosts: database
   become: yes
-  var_files:
-    - vars/main.yml
   roles:
     - common
     - role: geerlingguy.mysql
