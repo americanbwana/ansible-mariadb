@@ -1,0 +1,17 @@
+---
+# This playbook contains common plays that will be run on all nodes.
+
+- name: Install ntp
+  yum: name=ntp state=present
+  tags: ntp
+
+- name: Install common dependencies
+  yum: name={{ item }} state=installed
+  with_items:
+   - libselinux-python
+   - libsemanage-python
+   - firewalld
+
+- name: Start the ntp service
+  service: name=ntpd state=started enabled=yes
+  tags: ntp
