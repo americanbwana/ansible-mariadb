@@ -1,0 +1,3 @@
+- include: install-roles.yml
+- include: site.yml
+- include: installdb.yml
