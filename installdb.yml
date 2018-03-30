@@ -1,11 +1,15 @@
 - hosts: database
+  become: root
+  vars:
+    mysql_user_name: root
+    mysql_password: root
 
   tasks:
   - name: Create website database
     mysql_db: 
       name=world
-      login_user=root
-      login_password=root
+      login_user={{ mysql_user_name }}
+      login_password={{ mysql_password }}
       state=present
 
   - name: Copy website database
@@ -16,7 +20,7 @@
   - name: Import website database
     mysql_db: 
       name=world
-      login_user=root
-      login_password=root
+      login_user={{ mysql_user_name }}
+      login_password={{ mysql_password }}
       target=/tmp/world.sql
       state=import
