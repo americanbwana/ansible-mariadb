@@ -1,0 +1,12 @@
+---
+
+- hosts: all
+
+  tasks:
+    - file:
+        path:  roles
+        state: absent
+
+    - local_action:
+        command ansible-galaxy install -r requirements.yml
+
