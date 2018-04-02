@@ -1,5 +1,5 @@
 #Install geerlingguy.mysql
-- src: geerlingguy.mysql
 - src: geerlingguy.repo-remi
-- src; geerlingguy.php
+- src: geerlingguy.php
+- src: geerlingguy.nginx
 - src: geerlingguy.php-mysql
